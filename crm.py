@@ -30,6 +30,26 @@ def kunde_hinzufuegen():
         "telefon": telefon
     }
     print(f"Kunde '{name}' wurde hinzugefügt.")
+#------------------------------------------------------------------
+def kunde_suchen():
+    print("\n--- Kunden suchen ---")
+    suchbegriff = input("Geben Sie einen Suchbegriff (Name oder E-Mail) ein: ").lower()
+    gefundene_kunden = {}
+
+    for name, details in kunden.items():
+        if suchbegriff in name.lower() or suchbegriff in details.get('email', '').lower():
+            gefundene_kunden[name] = details
+
+    if not gefundene_kunden:
+        print(f"Keine Kunden gefunden, die '{suchbegriff}' im Namen oder in der E-Mail enthalten.")
+        return
+
+    print(f"\n--- Gefundene Kunden für '{suchbegriff}' ---")
+    for name, details in gefundene_kunden.items():
+        print(f"Name: {name}")
+        print(f"  E-Mail: {details.get('email', 'N/A')}")
+        print(f"  Telefon: {details.get('telefon', 'N/A')}")
+        print("-------------------------")
 
 #------------------------------------------------------------------
 
