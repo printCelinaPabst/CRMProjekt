@@ -1,4 +1,5 @@
 import json
+import re
 # Dein Kundenmanagement-System
 
 kunden = {} # Ein Dictionary zum Speichern der Kunden. Schlüssel: Kundenname, Wert: Dictionary mit Details
@@ -17,11 +18,25 @@ def kunden_anzeigen():
         print("-------------------------")
 
 #-----------------------------------------------------------------
-def kunde_hinzufuegen():
+def kunde_hinzufuegen(): # GEÄNDERT: Mit Validierung
     print("\n--- Kunden hinzufügen ---")
     name = input("Name des Kunden: ")
-    email = input("E-Mail des Kunden: ")
-    telefon = input("Telefonnummer des Kunden: ")
+
+    # Validierung für E-Mail
+    while True:
+        email = input("E-Mail des Kunden: ")
+        if re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            break
+        else:
+            print("Ungültiges E-Mail-Format. Bitte versuchen Sie es erneut.")
+
+    # Validierung für Telefonnummer
+    while True:
+        telefon = input("Telefonnummer des Kunden: ")
+        if telefon.replace('+', '').isdigit() and (telefon.startswith('+') or not telefon.startswith('+')):
+            break
+        else:
+            print("Ungültige Telefonnummer. Bitte geben Sie nur Ziffern ein (optional mit + am Anfang).")
 
     if name in kunden:
         print(f"Fehler: Kunde '{name}' existiert bereits im Katalog.")
