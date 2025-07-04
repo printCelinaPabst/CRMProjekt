@@ -74,6 +74,15 @@ def kunde_aktualisieren():
 
     print(f"Kunde '{name_zu_aktualisieren}' wurde aktualisiert.")
 #------------------------------------------------------------------
+def kunde_loeschen():
+    print("\n--- Kunden löschen ---")
+    name_zu_loeschen = input("Name des zu löschenden Kunden: ")
+    if name_zu_loeschen in kunden:
+        del kunden[name_zu_loeschen]
+        print(f"Kunde '{name_zu_loeschen}' wurde aus dem Katalog entfernt.")
+    else:
+        print(f"Fehler: Kunde '{name_zu_loeschen}' nicht im Katalog gefunden.")
+#------------------------------------------------------------------
 def zeige_menue():
     print("\n--- CRM Menü ---")
     print("1. Kunde hinzufügen")
