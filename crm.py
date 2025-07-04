@@ -52,7 +52,28 @@ def kunde_suchen():
         print("-------------------------")
 
 #------------------------------------------------------------------
+def kunde_aktualisieren():
+    print("\n--- Kunden aktualisieren ---")
+    name_zu_aktualisieren = input("Name des zu aktualisierenden Kunden: ")
 
+    if name_zu_aktualisieren not in kunden:
+        print(f"Fehler: Kunde '{name_zu_aktualisieren}' nicht im Katalog gefunden.")
+        return
+
+    print(f"Aktuelle Daten für {name_zu_aktualisieren}:")
+    print(f"  E-Mail: {kunden[name_zu_aktualisieren]['email']}")
+    print(f"  Telefon: {kunden[name_zu_aktualisieren]['telefon']}")
+
+    neue_email = input("Neue E-Mail (leer lassen für keine Änderung): ")
+    neue_telefon = input("Neue Telefonnummer (leer lassen für keine Änderung): ")
+
+    if neue_email:
+        kunden[name_zu_aktualisieren]['email'] = neue_email
+    if neue_telefon:
+        kunden[name_zu_aktualisieren]['telefon'] = neue_telefon
+
+    print(f"Kunde '{name_zu_aktualisieren}' wurde aktualisiert.")
+#------------------------------------------------------------------
 def zeige_menue():
     print("\n--- CRM Menü ---")
     print("1. Kunde hinzufügen")
