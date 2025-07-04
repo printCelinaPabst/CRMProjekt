@@ -13,6 +13,24 @@ def kunden_anzeigen():
         print(f"  E-Mail: {details.get('email', 'N/A')}")
         print(f"  Telefon: {details.get('telefon', 'N/A')}")
         print("-------------------------")
+        
+#-----------------------------------------------------------------
+def kunde_hinzufuegen():
+    print("\n--- Kunden hinzufügen ---")
+    name = input("Name des Kunden: ")
+    email = input("E-Mail des Kunden: ")
+    telefon = input("Telefonnummer des Kunden: ")
 
-# Test der Funktion (wird später durch ein Menü ersetzt)
+    if name in kunden:
+        print(f"Fehler: Kunde '{name}' existiert bereits im Katalog.")
+        return
+
+    kunden[name] = {
+        "email": email,
+        "telefon": telefon
+    }
+    print(f"Kunde '{name}' wurde hinzugefügt.")
+
+# Test der Funktionen (werden später durch ein Menü ersetzt)
+# kunde_hinzufuegen()
 # kunden_anzeigen()
